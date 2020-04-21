@@ -19,5 +19,20 @@ public class SellerDashboardPage extends MasterPage {
 		return getElementsText(allLeftMenu);
 	}
 	
+	public boolean checkALLSellerDashBoardLinks() {
+		
+		try {
+			clickAllElements(allLeftMenu);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		
+		return true;
+		
+	}
+	
+	
+	
 	
 }

@@ -6,7 +6,9 @@ Feature: Mct Seller Dash Board Features Test
     And I complete login with James valid credentails
     And I navigate to my account page
 
-  @WIP
+  
   Scenario: My Account options are available
-  	When I navigate to sellerdashboard
+    When I navigate to sellerdashboard
     Then I see all my dashboard left options available
+    And I expect all Seller Dash Board links are working    
+    

@@ -166,6 +166,16 @@ public class mct_login_steps {
 		//Assert.assertEquals("List Not Matched !!",expectedOptionsNames,actualOptionsNames);
 
 	}
+	
+	@Then("^I expect all Seller Dash Board links are working$")
+	public void I_expect_all_Seller_Dash_Board_links_are_working() {
+		
+		sellerDashboard.checkALLSellerDashBoardLinks();
+		
+		//Assert.assertEquals("All Links Not Good !!",true,sellerDashboard.checkALLSellerDashBoardLinks());
+		sellerDashboard.uglyWaitFor(2000);
+
+	}
 
 
 }
