@@ -1,4 +1,4 @@
-package ExcelReadWrite;
+package z.ExcelReadWrite;
 
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -9,7 +9,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Iterator;
 
-public class Ref_ApachePOIExcelRead {
+public class Ref_ApachePOIExcelRead2 {
 
     private static final String FILE_NAME = System.getProperty("user.dir") + "/MyFirstExcel.xlsx";
 
