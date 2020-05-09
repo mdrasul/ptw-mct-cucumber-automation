@@ -51,7 +51,22 @@ public class MasterPage {
 		}
 	}
 	
-	
+	public boolean elementExist(String locatores) {
+
+		try {
+			if(locatores.contains("ID")) {
+				return driver.findElement(By.id(locatores.split(":")[1])).isDisplayed();
+			}  else if(locatores.contains("Xpath")) {
+				return driver.findElement(By.xpath(locatores.split(":")[1])).isDisplayed();
+			} else if(locatores.contains("Name")) {
+				return driver.findElement(By.name(locatores.split(":")[1])).isDisplayed();
+			}	
+		} catch(Exception e) {
+			return false;
+		}
+
+		return false;
+	}
 	public void uglyWaitFor(int mls) {
 		try {
 			Thread.sleep(mls);

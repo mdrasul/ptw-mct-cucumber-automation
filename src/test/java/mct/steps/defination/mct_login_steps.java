@@ -5,7 +5,6 @@ import java.util.Random;
 
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
-
 import cucumber.api.DataTable;
 import cucumber.api.java.After;
 import cucumber.api.java.en.Given;
@@ -13,6 +12,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import mct.steps.pageobjectmodel.HomePage;
 import mct.steps.pageobjectmodel.MyAccountPage;
+import mct.steps.pageobjectmodel.MyOrders;
 import mct.steps.pageobjectmodel.RegistrationPage;
 import mct.steps.pageobjectmodel.SellerDashboardPage;
 import mct.steps.support.TestHelper;
@@ -26,6 +26,7 @@ public class mct_login_steps {
 	WebDriver driver;
 	MyAccountPage myaccountPage;
 	SellerDashboardPage sellerDashboard;
+	MyOrders myorders;
 	
 	String regUserData;
 	
@@ -151,6 +152,52 @@ public class mct_login_steps {
 	}
 
 	
+	@When("^I navigate to order page$")
+	public void I_navigate_to_order_page(){		
+		myaccountPage.navigateToOption("My Orders");
+		
+		// Wait 
+		myorders=new MyOrders(driver);
+		//sellerDashboard = new SellerDashboardPage(driver);
+	}
+	
+	@Then("I see a table with all my orders")
+	public void i_see_a_table_with_al_lmy_orderes() {
+	    // Write code here that turns the phrase above into concrete actions
+	    // throw new cucumber.api.PendingException();
+		
+		boolean isActualOrderTableisExist = myorders.isOrderTableExist();
+		
+		//Assert.assertEquals(isActualOrderTableisExist,true,"Failed To Find the Order History Table ");
+		if(isActualOrderTableisExist==true) {
+			System.out.println(" Find the Order History Table ");
+		}
+	}
+	
+	
+	
+	
+//	@Then("I exepct count {int} in my order table")
+//	public void i_exepct_count_in_my_order_table(int expCount) {
+//	    // Write code here that turns the phrase above into concrete actions
+//	    // throw new cucumber.api.PendingException();
+//		
+//		// =>> Get the total number of rows from a web table 
+//		int actualCount =myorders.getTotalTableRowsCount()-1;
+//		
+//		
+//		
+//		if(actualCount==expCount) {
+//			System.out.println("Failed To Find the Correct Number of!!!");
+//			
+//		};
+//
+//		
+//	}
+
+
+	
+	
 	
 	@Then("^I see all my dashboard left options available$")
 	public void i_see_all_my_dashboard_left_options_available(){
@@ -166,6 +213,20 @@ public class mct_login_steps {
 		//Assert.assertEquals("List Not Matched !!",expectedOptionsNames,actualOptionsNames);
 
 	}
+	
+	@Then("^I expect all Seller Dash Board links are working$")
+	public void I_expect_all_Seller_Dash_Board_links_are_working() {
+		
+		sellerDashboard.checkALLSellerDashBoardLinks();
+		
+		//Assert.assertEquals("All Links Not Good !!",true,sellerDashboard.checkALLSellerDashBoardLinks());
+		sellerDashboard.uglyWaitFor(2000);
+
+	}
 
 
+	
+	
+	
+	
 }
